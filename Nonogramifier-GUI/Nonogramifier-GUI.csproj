@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NonogramDrawer.cs" />
     <Compile Include="PixelSequence.cs" />
     <Compile Include="Nonogram.cs" />
     <Compile Include="Nonogramifier.cs">
