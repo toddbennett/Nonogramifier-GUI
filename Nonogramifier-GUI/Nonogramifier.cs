@@ -14,10 +14,12 @@ namespace Nonogramifier_GUI
     {
         private Bitmap image;
         private Nonogram nono = null;
+        private NonogramDrawer d;
 
         public Nonogramifier()
         {
             InitializeComponent();
+            d = new NonogramDrawer(picBox.CreateGraphics());
         }
 
         private void createNonogram()
@@ -45,6 +47,8 @@ namespace Nonogramifier_GUI
 
         private void drawNonogram()
         {
+
+            /*
             Graphics gfx = picBox.CreateGraphics();
             gfx.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.None;
             gfx.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
@@ -71,6 +75,10 @@ namespace Nonogramifier_GUI
 
             // Draw the Nonogram itself
             gfx.DrawImage(image, w / 3, h / 3, h * 2 / 3, h * 2 / 3);
+            */
+
+            nono.DrawToImage(d);
+            d.DrawEverything();
         }
 
         private void openFileToolStripMenuItem_Click(object sender, EventArgs e)

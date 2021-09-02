@@ -36,6 +36,7 @@ namespace Nonogramifier_GUI
         public int[] getSequence() => Sequence;
 
         public int length { get { return Sequence.Length; } }
+
     }
 
    

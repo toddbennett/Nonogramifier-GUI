@@ -37,7 +37,7 @@ namespace Nonogramifier_GUI
             for (int i = 0; i < width; i++)
             {
                 bool[] sequence = new bool[height];
-                for (int j = 0; j < width; j++)
+                for (int j = 0; j < height; j++)
                 {
                     sequence[j] = myPixels[i, j];
                 }
@@ -47,10 +47,31 @@ namespace Nonogramifier_GUI
 
         }
 
-        public int Width { get; }
-        public int Height { get; }
+        public void DrawToImage(NonogramDrawer d)
+        {
+            d.clearNono();
+            d.setNonoDimensions(width, height);
+            for (int i = 0; i < width; i++)
+            {
+                for (int j = 0; j < height; j++)
+                {
+                    if (myPixels[i, j]) d.setNonoPixel(i, j);
+                }
+            }
 
-        public int RowsWidth { get { return maxRow; } }
-        public int ColsHeight {  get { return maxCol; } }
+            d.clearRows();
+            d.setLongestRow(maxRow);
+            for (int j = 0; j < height; j++)
+            {
+                d.setRow(j, Rows[j].getSequence());
+            }
+
+            d.clearColumns();
+            d.setLongestCol(maxCol);
+            for (int i = 0; i < width; i++)
+            {
+                d.setCol(i, Columns[i].getSequence());
+            }
+        }
     }
 }
