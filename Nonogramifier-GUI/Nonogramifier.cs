@@ -26,18 +26,18 @@ namespace Nonogramifier_GUI
         {
             int width = image.Width;
             int height = image.Height;
-            bool[,] pixels = new bool[width, height];
+            PixelState[,] pixels = new PixelState[width, height];
             for (int i = 0; i < width; i++)
             {
                 for (int j = 0; j < height; j++)
                 {
                     if (image.GetPixel(i, j).B == 0)
                     {
-                        pixels[i, j] = true;
+                        pixels[i, j] = PixelState.Filled;
                     }
                     else
                     {
-                        pixels[i, j] = false;
+                        pixels[i, j] = PixelState.Empty;
                     }
                 }
             }
@@ -100,6 +100,16 @@ namespace Nonogramifier_GUI
 
         private void Nonogramifier_Resize(object sender, EventArgs e)
         {
+            d.ResetDimensions(picBox.CreateGraphics());
+            nono.DrawToImage(d);
+            d.DrawEverything();
+        }
+
+        private void solveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Nonogram n = new Nonogram(nono.getRows(), nono.getColumns());
+            nono = n;
+            nono.Solve();
             d.ResetDimensions(picBox.CreateGraphics());
             nono.DrawToImage(d);
             d.DrawEverything();

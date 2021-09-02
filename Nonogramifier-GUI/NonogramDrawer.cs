@@ -11,6 +11,7 @@ namespace Nonogramifier_GUI
     {
         private Graphics gfx;
         private Brush brsBlack;
+        private Brush brsGray;
         private Font fnt;
         private StringFormat fmtRow;
         private StringFormat fmtCol;
@@ -41,6 +42,7 @@ namespace Nonogramifier_GUI
         {
             gfx = g;
             brsBlack = new SolidBrush(Color.Black);
+            brsGray = new SolidBrush(Color.LightSlateGray);
             fnt = new Font("Arial", 14);
             fmtRow = new StringFormat(StringFormatFlags.NoClip);
             fmtRow.LineAlignment = StringAlignment.Near;
@@ -106,6 +108,11 @@ namespace Nonogramifier_GUI
         public void setNonoPixel(int x, int y)
         {
             Graphics.FromImage(imgNono).FillRectangle(brsBlack, wNono * x / xPixels, hNono * y / yPixels, wNono / xPixels, hNono / yPixels);
+        }
+
+        public void setNonoPixelUndetermined(int x, int y)
+        {
+            Graphics.FromImage(imgNono).FillRectangle(brsGray, wNono * x / xPixels, hNono * y / yPixels, wNono / xPixels, hNono / yPixels);
         }
 
         public void clearNono()
