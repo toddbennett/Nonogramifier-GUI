@@ -19,8 +19,8 @@ namespace Nonogramifier_GUI
         public Nonogram(bool[,] Pixels)
         {
             this.myPixels = Pixels;
-            width = myPixels.GetLength(1);
-            height = myPixels.GetLength(0);
+            width = myPixels.GetLength(0);
+            height = myPixels.GetLength(1);
             Rows = new PixelSequence[height];
             for (int j = 0; j < height; j++)
             {

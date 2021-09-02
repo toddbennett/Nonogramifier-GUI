@@ -26,18 +26,18 @@ namespace Nonogramifier_GUI
         {
             int width = image.Width;
             int height = image.Height;
-            bool[,] pixels = new bool[height, width];
+            bool[,] pixels = new bool[width, height];
             for (int i = 0; i < width; i++)
             {
                 for (int j = 0; j < height; j++)
                 {
                     if (image.GetPixel(i, j).B == 0)
                     {
-                        pixels[j, i] = true;
+                        pixels[i, j] = true;
                     }
                     else
                     {
-                        pixels[j, i] = false;
+                        pixels[i, j] = false;
                     }
                 }
             }

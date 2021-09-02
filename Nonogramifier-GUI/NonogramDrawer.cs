@@ -12,6 +12,8 @@ namespace Nonogramifier_GUI
         private Graphics gfx;
         private Brush brsBlack;
         private Font fnt;
+        private StringFormat fmtRow;
+        private StringFormat fmtCol;
 
         private Bitmap imgNono;
         private float xNono;
@@ -39,7 +41,13 @@ namespace Nonogramifier_GUI
         {
             gfx = g;
             brsBlack = new SolidBrush(Color.Black);
-            fnt = new Font("Arial", 16);
+            fnt = new Font("Arial", 14);
+            fmtRow = new StringFormat(StringFormatFlags.NoClip);
+            fmtRow.LineAlignment = StringAlignment.Near;
+            fmtRow.Alignment = StringAlignment.Near;
+            fmtCol = new StringFormat(StringFormatFlags.NoClip);
+            fmtCol.LineAlignment = StringAlignment.Near;
+            fmtCol.Alignment = StringAlignment.Near;
 
             // Initiaize Nonogram image
             xNono = g.VisibleClipBounds.Right / 3;
@@ -88,7 +96,7 @@ namespace Nonogramifier_GUI
         {
             for (int i = 0; i < row.Length; i++)
             {
-                Graphics.FromImage(imgRows).DrawString(row[i].ToString(), fnt, brsBlack, wRows - ((wRows / longestRow) * ((row.Length - i))), y * (hRows / yPixels));
+                Graphics.FromImage(imgRows).DrawString(row[i].ToString(), fnt, brsBlack, wRows - ((wRows / longestRow) * ((row.Length - i))), y * (hRows / yPixels), fmtRow);
             }
         }
 
@@ -106,7 +114,7 @@ namespace Nonogramifier_GUI
         {
             for (int i = 0; i < col.Length; i++)
             {
-                Graphics.FromImage(imgCols).DrawString(col[i].ToString(), fnt, brsBlack, x * (wCols / xPixels), hCols - ((hCols / longestCol) * ((col.Length - i))));
+                Graphics.FromImage(imgCols).DrawString(col[i].ToString(), fnt, brsBlack, x * (wCols / xPixels), hCols - ((hCols / longestCol) * ((col.Length - i))), fmtCol);
             }
         }
 
