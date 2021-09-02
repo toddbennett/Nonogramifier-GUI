@@ -60,18 +60,21 @@ namespace Nonogramifier_GUI
             // openFileToolStripMenuItem
             // 
             this.openFileToolStripMenuItem.Name = "openFileToolStripMenuItem";
-            this.openFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openFileToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.openFileToolStripMenuItem.Text = "Open File";
             this.openFileToolStripMenuItem.Click += new System.EventHandler(this.openFileToolStripMenuItem_Click);
             // 
             // closeFileToolStripMenuItem
             // 
             this.closeFileToolStripMenuItem.Name = "closeFileToolStripMenuItem";
-            this.closeFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.closeFileToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.closeFileToolStripMenuItem.Text = "Close File";
             // 
             // picBox
             // 
+            this.picBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.picBox.Location = new System.Drawing.Point(12, 27);
             this.picBox.Name = "picBox";
             this.picBox.Size = new System.Drawing.Size(760, 522);
@@ -88,6 +91,7 @@ namespace Nonogramifier_GUI
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Nonogramifier";
             this.Text = "Nonogramifier";
+            this.Resize += new System.EventHandler(this.Nonogramifier_Resize);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBox)).EndInit();

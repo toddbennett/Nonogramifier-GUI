@@ -71,6 +71,32 @@ namespace Nonogramifier_GUI
             imgCols = new Bitmap((Int32)wCols, (Int32)hCols);
         }
 
+        public void ResetDimensions(Graphics g)
+        {
+            gfx = g;
+
+            // Initiaize Nonogram image
+            xNono = g.VisibleClipBounds.Right / 3;
+            yNono = g.VisibleClipBounds.Bottom / 3;
+            wNono = g.VisibleClipBounds.Right - xNono;
+            hNono = g.VisibleClipBounds.Bottom - yNono;
+            imgNono = new Bitmap((Int32)wNono, (Int32)hNono);
+
+            // Initialize Rows image
+            xRows = 0;
+            yRows = yNono;
+            wRows = xNono;
+            hRows = hNono;
+            imgRows = new Bitmap((Int32)wRows, (Int32)hRows);
+
+            // Initialize Columns image
+            xCols = xNono;
+            yCols = 0;
+            wCols = wNono;
+            hCols = yNono;
+            imgCols = new Bitmap((Int32)wCols, (Int32)hCols);
+        }
+
         public void setNonoDimensions(int x, int y)
         {
             xPixels = x;
@@ -140,6 +166,7 @@ namespace Nonogramifier_GUI
 
         public void DrawEverything()
         {
+            gfx.Clear(Color.White);
             drawNonogram();
             drawRows();
             drawColumns();

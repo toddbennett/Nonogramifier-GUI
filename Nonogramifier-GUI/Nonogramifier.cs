@@ -97,5 +97,12 @@ namespace Nonogramifier_GUI
 
             drawNonogram();
         }
+
+        private void Nonogramifier_Resize(object sender, EventArgs e)
+        {
+            d.ResetDimensions(picBox.CreateGraphics());
+            nono.DrawToImage(d);
+            d.DrawEverything();
+        }
     }
 }
