@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Nonogramifier_GUI
 {
@@ -66,7 +63,7 @@ namespace Nonogramifier_GUI
 
                     if (s > skip)
                     {
-                        for (int i = position+skip; i < (s + position); i++)
+                        for (int i = position + skip; i < (s + position); i++)
                         {
                             ps[i] = PixelState.Filled;
                         }

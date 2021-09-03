@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
-using System.Windows.Forms;
 using System.IO;
+using System.Windows.Forms;
 
 namespace Nonogramifier_GUI
 {
@@ -87,7 +87,7 @@ namespace Nonogramifier_GUI
             SaveFileDialog dlg = new SaveFileDialog();
             Stream s;
             dlg.Filter = "bmp files (*.bmp)|*.bmp";
-            
+
             if (dlg.ShowDialog() == DialogResult.OK)
             {
                 if ((s = dlg.OpenFile()) != null)

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Nonogramifier_GUI
+﻿namespace Nonogramifier_GUI
 {
     public class Nonogram
     {
@@ -63,7 +57,7 @@ namespace Nonogramifier_GUI
             maxRow = 0;
             for (int j = 0; j < height; j++)
             {
-                if(Rows[j].Length > maxRow) maxRow = Rows[j].Length;
+                if (Rows[j].Length > maxRow) maxRow = Rows[j].Length;
             }
 
             Solve();
