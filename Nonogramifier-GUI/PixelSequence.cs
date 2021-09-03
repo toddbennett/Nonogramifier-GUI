@@ -36,9 +36,9 @@ namespace Nonogramifier_GUI
             }
         }
 
-        public int[] getSequence() => Sequence;
+        public int[] GetSequence() => Sequence;
 
-        public int length { get { return Sequence.Length; } }
+        public int Length { get { return Sequence.Length; } }
 
         public PixelState[] Solve(PixelState[] ps)
         {

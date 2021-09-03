@@ -44,12 +44,16 @@ namespace Nonogramifier_GUI
             brsBlack = new SolidBrush(Color.Black);
             brsGray = new SolidBrush(Color.LightSlateGray);
             fnt = new Font("Arial", 14);
-            fmtRow = new StringFormat(StringFormatFlags.NoClip);
-            fmtRow.LineAlignment = StringAlignment.Near;
-            fmtRow.Alignment = StringAlignment.Near;
-            fmtCol = new StringFormat(StringFormatFlags.NoClip);
-            fmtCol.LineAlignment = StringAlignment.Near;
-            fmtCol.Alignment = StringAlignment.Near;
+            fmtRow = new StringFormat(StringFormatFlags.NoClip)
+            {
+                LineAlignment = StringAlignment.Near,
+                Alignment = StringAlignment.Near
+            };
+            fmtCol = new StringFormat(StringFormatFlags.NoClip)
+            {
+                LineAlignment = StringAlignment.Near,
+                Alignment = StringAlignment.Near
+            };
 
             // Initiaize Nonogram image
             xNono = g.VisibleClipBounds.Right / 3;
@@ -99,33 +103,33 @@ namespace Nonogramifier_GUI
             imgCols = new Bitmap((Int32)wCols, (Int32)hCols);
         }
 
-        public void setNonoDimensions(int x, int y)
+        public void SetNonoDimensions(int x, int y)
         {
             xPixels = x;
             yPixels = y;
         }
 
-        public void setNonoPixel(int x, int y)
+        public void SetNonoPixel(int x, int y)
         {
             Graphics.FromImage(imgNono).FillRectangle(brsBlack, wNono * x / xPixels, hNono * y / yPixels, wNono / xPixels, hNono / yPixels);
         }
 
-        public void setNonoPixelUndetermined(int x, int y)
+        public void SetNonoPixelUndetermined(int x, int y)
         {
             Graphics.FromImage(imgNono).FillRectangle(brsGray, wNono * x / xPixels, hNono * y / yPixels, wNono / xPixels, hNono / yPixels);
         }
 
-        public void clearNono()
+        public void ClearNono()
         {
             Graphics.FromImage(imgNono).Clear(Color.White);
         }
 
-        public void setLongestRow(int max)
+        public void SetLongestRow(int max)
         {
             longestRow = max;
         }
 
-        public void setRow(int y, int[] row)
+        public void SetRow(int y, int[] row)
         {
             for (int i = 0; i < row.Length; i++)
             {
@@ -133,17 +137,17 @@ namespace Nonogramifier_GUI
             }
         }
 
-        public void clearRows()
+        public void ClearRows()
         {
             Graphics.FromImage(imgRows).Clear(Color.White);
         }
 
-        public void setLongestCol(int max)
+        public void SetLongestCol(int max)
         {
             longestCol = max;
         }
 
-        public void setCol(int x, int[] col)
+        public void SetCol(int x, int[] col)
         {
             for (int i = 0; i < col.Length; i++)
             {
@@ -151,22 +155,22 @@ namespace Nonogramifier_GUI
             }
         }
 
-        public void clearColumns()
+        public void ClearColumns()
         {
             Graphics.FromImage(imgCols).Clear(Color.White);
         }
 
-        private void drawNonogram()
+        private void DrawNonogram()
         {
             gfx.DrawImage(imgNono, xNono, yNono, wNono, hNono);
         }
 
-        private void drawRows()
+        private void DrawRows()
         {
             gfx.DrawImage(imgRows, xRows, yRows, wRows, hRows);
         }
 
-        private void drawColumns()
+        private void DrawColumns()
         {
             gfx.DrawImage(imgCols, xCols, yCols, wCols, hCols);
         }
@@ -174,9 +178,9 @@ namespace Nonogramifier_GUI
         public void DrawEverything()
         {
             gfx.Clear(Color.White);
-            drawNonogram();
-            drawRows();
-            drawColumns();
+            DrawNonogram();
+            DrawRows();
+            DrawColumns();
         }
 
         public void DrawToImage(Graphics bitgfx)

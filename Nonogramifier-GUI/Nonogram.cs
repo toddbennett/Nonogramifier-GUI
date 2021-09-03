@@ -30,7 +30,7 @@ namespace Nonogramifier_GUI
                     sequence[i] = myPixels[i, j];
                 }
                 Rows[j] = new PixelSequence(sequence);
-                if (Rows[j].length > maxRow) maxRow = Rows[j].length;
+                if (Rows[j].Length > maxRow) maxRow = Rows[j].Length;
             }
 
             Columns = new PixelSequence[width];
@@ -42,7 +42,7 @@ namespace Nonogramifier_GUI
                     sequence[j] = myPixels[i, j];
                 }
                 Columns[i] = new PixelSequence(sequence);
-                if (Columns[i].length > maxCol) maxCol = Columns[i].length;
+                if (Columns[i].Length > maxCol) maxCol = Columns[i].Length;
             }
         }
 
@@ -57,13 +57,13 @@ namespace Nonogramifier_GUI
             maxCol = 0;
             for (int i = 0; i < width; i++)
             {
-                if (Columns[i].length > maxCol) maxCol = Columns[i].length;
+                if (Columns[i].Length > maxCol) maxCol = Columns[i].Length;
             }
 
             maxRow = 0;
             for (int j = 0; j < height; j++)
             {
-                if(Rows[j].length > maxRow) maxRow = Rows[j].length;
+                if(Rows[j].Length > maxRow) maxRow = Rows[j].Length;
             }
 
             Solve();
@@ -83,17 +83,17 @@ namespace Nonogramifier_GUI
             // Check rows
             for (int i = 0; i < height; i++)
             {
-                setRowPS(i, Rows[i].Solve(getRowPS(i)));
+                SetRowPS(i, Rows[i].Solve(GetRowPS(i)));
             }
 
             // Check columns
             for (int i = 0; i < width; i++)
             {
-                setColumnPS(i, Columns[i].Solve(getColumnPS(i)));
+                SetColumnPS(i, Columns[i].Solve(GetColumnPS(i)));
             }
         }
 
-        public PixelState[] getRowPS(int r)
+        public PixelState[] GetRowPS(int r)
         {
             PixelState[] ps = new PixelState[width];
             for (int i = 0; i < width; i++)
@@ -103,7 +103,7 @@ namespace Nonogramifier_GUI
             return ps;
         }
 
-        public void setRowPS(int r, PixelState[] ps)
+        public void SetRowPS(int r, PixelState[] ps)
         {
             for (int i = 0; i < width; i++)
             {
@@ -111,7 +111,7 @@ namespace Nonogramifier_GUI
             }
         }
 
-        public PixelState[] getColumnPS(int c)
+        public PixelState[] GetColumnPS(int c)
         {
             PixelState[] ps = new PixelState[height];
             for (int i = 0; i < height; i++)
@@ -121,7 +121,7 @@ namespace Nonogramifier_GUI
             return ps;
         }
 
-        public void setColumnPS(int c, PixelState[] ps)
+        public void SetColumnPS(int c, PixelState[] ps)
         {
             for (int i = 0; i < height; i++)
             {
@@ -129,40 +129,40 @@ namespace Nonogramifier_GUI
             }
         }
 
-        public void DrawToImage(NonogramDrawer d)
+        public void DrawSelf(NonogramDrawer d)
         {
-            d.clearNono();
-            d.setNonoDimensions(width, height);
+            d.ClearNono();
+            d.SetNonoDimensions(width, height);
             for (int i = 0; i < width; i++)
             {
                 for (int j = 0; j < height; j++)
                 {
-                    if (myPixels[i, j] == PixelState.Filled) d.setNonoPixel(i, j);
-                    else if (myPixels[i, j] == PixelState.Undetermined) d.setNonoPixelUndetermined(i, j);
+                    if (myPixels[i, j] == PixelState.Filled) d.SetNonoPixel(i, j);
+                    else if (myPixels[i, j] == PixelState.Undetermined) d.SetNonoPixelUndetermined(i, j);
                 }
             }
 
-            d.clearRows();
-            d.setLongestRow(maxRow);
+            d.ClearRows();
+            d.SetLongestRow(maxRow);
             for (int j = 0; j < height; j++)
             {
-                d.setRow(j, Rows[j].getSequence());
+                d.SetRow(j, Rows[j].GetSequence());
             }
 
-            d.clearColumns();
-            d.setLongestCol(maxCol);
+            d.ClearColumns();
+            d.SetLongestCol(maxCol);
             for (int i = 0; i < width; i++)
             {
-                d.setCol(i, Columns[i].getSequence());
+                d.SetCol(i, Columns[i].GetSequence());
             }
         }
 
-        public PixelSequence[] getRows()
+        public PixelSequence[] GetRows()
         {
             return Rows;
         }
 
-        public PixelSequence[] getColumns()
+        public PixelSequence[] GetColumns()
         {
             return Columns;
         }
