@@ -33,8 +33,9 @@ namespace Nonogramifier_GUI
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.picBox = new System.Windows.Forms.PictureBox();
             this.solveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.picBox = new System.Windows.Forms.PictureBox();
+            this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBox)).BeginInit();
             this.SuspendLayout();
@@ -54,7 +55,8 @@ namespace Nonogramifier_GUI
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openFileToolStripMenuItem,
             this.closeFileToolStripMenuItem,
-            this.solveToolStripMenuItem});
+            this.solveToolStripMenuItem,
+            this.exportToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
@@ -62,15 +64,22 @@ namespace Nonogramifier_GUI
             // openFileToolStripMenuItem
             // 
             this.openFileToolStripMenuItem.Name = "openFileToolStripMenuItem";
-            this.openFileToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.openFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.openFileToolStripMenuItem.Text = "Open File";
             this.openFileToolStripMenuItem.Click += new System.EventHandler(this.openFileToolStripMenuItem_Click);
             // 
             // closeFileToolStripMenuItem
             // 
             this.closeFileToolStripMenuItem.Name = "closeFileToolStripMenuItem";
-            this.closeFileToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.closeFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.closeFileToolStripMenuItem.Text = "Close File";
+            // 
+            // solveToolStripMenuItem
+            // 
+            this.solveToolStripMenuItem.Name = "solveToolStripMenuItem";
+            this.solveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.solveToolStripMenuItem.Text = "Solve";
+            this.solveToolStripMenuItem.Click += new System.EventHandler(this.solveToolStripMenuItem_Click);
             // 
             // picBox
             // 
@@ -83,12 +92,12 @@ namespace Nonogramifier_GUI
             this.picBox.TabIndex = 1;
             this.picBox.TabStop = false;
             // 
-            // solveToolStripMenuItem
+            // exportToolStripMenuItem
             // 
-            this.solveToolStripMenuItem.Name = "solveToolStripMenuItem";
-            this.solveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.solveToolStripMenuItem.Text = "Solve";
-            this.solveToolStripMenuItem.Click += new System.EventHandler(this.solveToolStripMenuItem_Click);
+            this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exportToolStripMenuItem.Text = "Export";
+            this.exportToolStripMenuItem.Click += new System.EventHandler(this.exportToolStripMenuItem_Click);
             // 
             // Nonogramifier
             // 
@@ -117,6 +126,7 @@ namespace Nonogramifier_GUI
         private System.Windows.Forms.ToolStripMenuItem closeFileToolStripMenuItem;
         private System.Windows.Forms.PictureBox picBox;
         private System.Windows.Forms.ToolStripMenuItem solveToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
     }
 }
 

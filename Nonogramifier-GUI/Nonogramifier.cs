@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Nonogramifier_GUI
 {
@@ -113,6 +114,24 @@ namespace Nonogramifier_GUI
             d.ResetDimensions(picBox.CreateGraphics());
             nono.DrawToImage(d);
             d.DrawEverything();
+        }
+
+        private void exportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog dlg = new SaveFileDialog();
+            Stream s;
+            dlg.Filter = "bmp files (*.bmp)|*.bmp";
+            
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                if ((s = dlg.OpenFile()) != null)
+                {
+                    Bitmap bmp = new Bitmap(picBox.Width, picBox.Height);
+                    d.DrawToImage(Graphics.FromImage(bmp));
+                    bmp.Save(s, System.Drawing.Imaging.ImageFormat.Bmp);
+                    s.Close();
+                }
+            }
         }
     }
 }

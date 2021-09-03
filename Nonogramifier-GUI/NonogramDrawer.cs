@@ -178,5 +178,14 @@ namespace Nonogramifier_GUI
             drawRows();
             drawColumns();
         }
+
+        public void DrawToImage(Graphics bitgfx)
+        {
+            Graphics g = gfx;
+            gfx = bitgfx;
+
+            DrawEverything();
+            gfx = g;
+        }
     }
 }
