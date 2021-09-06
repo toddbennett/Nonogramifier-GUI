@@ -85,6 +85,19 @@
             return true;
         }
 
+        public int GetNumUndetermined()
+        {
+            int n = 0;
+            for (int i = 0; i < width; i++)
+            {
+                for (int j = 0; j < height; j++)
+                {
+                    if (myPixels[i, j] == PixelState.Undetermined) n++;
+                }
+            }
+            return n;
+        }
+
         public void Solve()
         {
             Clear(PixelState.Undetermined);
@@ -100,6 +113,28 @@
             {
                 SetColumnPS(i, Columns[i].Solve(GetColumnPS(i)));
             }
+
+            int n = GetNumUndetermined();
+
+            while (!IsSolved())
+            {
+
+                // Bruteforce columns
+                for (int i = 0; i < width; i++)
+                {
+                    SetColumnPS(i, Columns[i].SolveBrute(GetColumnPS(i)));
+                }
+
+                // Bruteforce rows
+                for (int i = 0; i < height; i++)
+                {
+                    SetRowPS(i, Rows[i].SolveBrute(GetRowPS(i)));
+                }
+
+                int n2 = GetNumUndetermined();
+                if (n == n2) return;
+                n = n2;
+            }
         }
 
         public void SolveBruteForce()
@@ -114,8 +149,8 @@
                 j = 0;
                 while (myPixels[i, j] == PixelState.Filled)
                 {
-                    if (IsSolved()) return;
                     myPixels[i, j] = PixelState.Empty;
+                    if (IsSolved()) return;
                     i++;
                     if (i >= width)
                     {
@@ -127,8 +162,11 @@
                         break;
                     }
                 }
-                if (j < height) myPixels[i, j] = PixelState.Filled;
-                if (IsSolved()) return;
+                if (j < height)
+                {
+                    myPixels[i, j] = PixelState.Filled;
+                    if (IsSolved()) return;
+                }
             }
         }
 
