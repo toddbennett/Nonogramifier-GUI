@@ -56,13 +56,13 @@ namespace Nonogramifier_GUI
             if (dlg.ShowDialog() == DialogResult.OK)
             {
                 img = new Bitmap(dlg.OpenFile());
+                CreateNonogram();
+                DrawNonogram();
             }
 
             dlg.Dispose();
 
-            CreateNonogram();
-
-            DrawNonogram();
+            
         }
 
         private void Nonogramifier_Resize(object sender, EventArgs e)
