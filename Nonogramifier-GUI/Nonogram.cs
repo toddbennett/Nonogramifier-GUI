@@ -59,20 +59,35 @@
             {
                 if (Rows[j].Length > maxRow) maxRow = Rows[j].Length;
             }
-
-            Solve();
         }
 
-        public void Solve()
+        public void Clear(PixelState ps)
         {
-            // Clear pixel board
             for (int i = 0; i < width; i++)
             {
                 for (int j = 0; j < height; j++)
                 {
-                    myPixels[i, j] = PixelState.Undetermined;
+                    myPixels[i, j] = ps;
                 }
             }
+        }
+
+        public bool IsSolved()
+        {
+            for (int i = 0; i < height; i++)
+            {
+                if (!Rows[i].IsSolved(GetRowPS(i))) return false;
+            }
+            for (int i = 0; i < width; i++)
+            {
+                if (!Columns[i].IsSolved(GetColumnPS(i))) return false;
+            }
+            return true;
+        }
+
+        public void Solve()
+        {
+            Clear(PixelState.Undetermined);
 
             // Check rows
             for (int i = 0; i < height; i++)
@@ -84,6 +99,36 @@
             for (int i = 0; i < width; i++)
             {
                 SetColumnPS(i, Columns[i].Solve(GetColumnPS(i)));
+            }
+        }
+
+        public void SolveBruteForce()
+        {
+            Clear(PixelState.Empty);
+
+            int i = 0;
+            int j = 0;
+            while (true)
+            {
+                i = 0;
+                j = 0;
+                while (myPixels[i, j] == PixelState.Filled)
+                {
+                    if (IsSolved()) return;
+                    myPixels[i, j] = PixelState.Empty;
+                    i++;
+                    if (i >= width)
+                    {
+                        i = 0;
+                        j++;
+                    }
+                    if (j >= height)
+                    {
+                        break;
+                    }
+                }
+                if (j < height) myPixels[i, j] = PixelState.Filled;
+                if (IsSolved()) return;
             }
         }
 

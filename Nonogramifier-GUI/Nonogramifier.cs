@@ -76,7 +76,7 @@ namespace Nonogramifier_GUI
         {
             Nonogram n = new Nonogram(nono.GetRows(), nono.GetColumns());
             nono = n;
-            nono.Solve();
+            nono.SolveBruteForce();
             d.ResetDimensions(picBox.CreateGraphics());
             nono.DrawSelf(d);
             d.DrawEverything();

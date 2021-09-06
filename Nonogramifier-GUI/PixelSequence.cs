@@ -133,6 +133,34 @@ namespace Nonogramifier_GUI
 
             return (psSum == sum);
         }
+
+        public bool IsSolved(PixelState[] ps)
+        {
+            int i = 0;
+            foreach (int s in Sequence)
+            {
+                if (i >= ps.Length) return false;
+                while (i < ps.Length && ps[i] == PixelState.Empty)
+                {
+                    i++;
+                }
+                int j = s;
+                while (i < ps.Length && ps[i] == PixelState.Filled)
+                {
+                    i++;
+                    j--;
+                }
+                if (j != 0) return false;
+                if (i < ps.Length && ps[i] != PixelState.Empty) return false;
+                i++;
+            }
+            while (i < ps.Length)
+            {
+                if (ps[i] != PixelState.Empty) return false;
+                i++;
+            }
+            return true;
+        }
     }
 
     public enum PixelState
